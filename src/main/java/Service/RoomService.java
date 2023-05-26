@@ -1,13 +1,11 @@
 package Service;
 
-import Data.GuestList;
-import Data.RoomList;
+import Data.DataBase;
 import Model.Guest;
 import Model.Room;
 import Model.RoomType;
 import Model.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,15 +13,15 @@ public class RoomService {
 
 
     public void addRoom(Room room) {
-        RoomList.rooms.add(room);
+        DataBase.rooms.add(room);
     }
 
     public void deleteRoom(int Id) {
-        RoomList.rooms.removeIf(room -> room.getRoomNo() == Id);
+        DataBase.rooms.removeIf(room -> room.getRoomNo() == Id);
     }
 
     public void updateRoomAvailability(int roomNo, boolean state) {
-        for (Room room : RoomList.rooms) {
+        for (Room room : DataBase.rooms) {
             if (room.getRoomNo() == roomNo) {
                 room.setOccupied(false);
             }
@@ -35,22 +33,22 @@ public class RoomService {
      * on what you call from MAIN
      **/
     public void filterBusy(boolean state) {
-        for (Room room : RoomList.rooms) {
+        for (Room room : DataBase.rooms) {
             if (room.isOccupied() == state)
                 System.out.println(room.toString());
         }
     }
 
     public void filterBusyRoomType(boolean state, RoomType roomType) {
-        for (Room room : RoomList.rooms) {
+        for (Room room : DataBase.rooms) {
             if (room.isOccupied() == state && Objects.equals(room.getRoomType(), roomType))
                 System.out.println(room.toString());
         }
     }
 
     public void filterBusyRoomTypeServices(boolean state, RoomType roomType, List<Service> services) {
-        for (Guest guest : GuestList.guests) {
-            for (Room room : RoomList.rooms) {
+        for (Guest guest : DataBase.guests) {
+            for (Room room : DataBase.rooms) {
                 if (room.isOccupied() == state && guest.getServices() == services && room.getRoomType() == roomType) {
                     System.out.println(room.toString());
                 }
@@ -60,7 +58,7 @@ public class RoomService {
     }
 
     public List<Room> getAllRooms() {
-        return RoomList.rooms;
+        return DataBase.rooms;
     }
 
 }

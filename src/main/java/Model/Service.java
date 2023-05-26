@@ -19,9 +19,9 @@ public class Service {
     private List<Guest> guests;
     private static int count = 0;
 
-    public Service(String serviceName, double price) {
+    public Service(int serviceID, String serviceName, double price) {
         this.serviceName = serviceName;
         this.price = price;
-        serviceID = ++count;
+        this.serviceID = serviceID;
     }
 }

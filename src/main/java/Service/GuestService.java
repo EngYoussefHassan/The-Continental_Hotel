@@ -1,6 +1,6 @@
 package Service;
 
-import Data.GuestList;
+import Data.DataBase;
 import Model.Guest;
 import Model.Room;
 
@@ -9,12 +9,11 @@ import java.util.stream.Collectors;
 
 public class GuestService {
     public void addGuest(Guest guest) {
-        GuestList.guests.add(guest);
+        DataBase.guests.add(guest);
     }
 
     public void deleteGuest(int Id) {
-        GuestList.guests = GuestList.guests.stream().filter(g -> g.getGuestID() != Id).collect(Collectors.toList());
-
+        DataBase.guests = DataBase.guests.stream().filter(g -> g.getGuestID() != Id).collect(Collectors.toList());
     }
 
     public void updateGuestRoom(Guest guest, Room newRoom) {
@@ -23,6 +22,6 @@ public class GuestService {
 
 
     public List<Guest> getAllGuests() {
-        return GuestList.guests;
+        return DataBase.guests;
     }
 }

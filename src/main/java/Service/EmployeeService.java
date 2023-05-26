@@ -1,25 +1,22 @@
 package Service;
 
-import Data.GuestList;
-import Data.ServiceList;
+import Data.DataBase;
 import Model.Employee;
 import Model.Guest;
 import Model.Room;
 import Model.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeService {
-    public List<Employee> Employees = new ArrayList<Employee>();
 
     public void AddEmp(Employee employee) {
-        Employees.add(employee);
+        DataBase.employees.add(employee);
     }
 
     public void deleteEmp(int Id) {
-        Employees.removeIf(emp -> emp.getEmpID() == Id);
+        DataBase.employees.removeIf(emp -> emp.getEmpID() == Id);
     }
 
     public void updateEmpSalary(Employee emp, float newSalary) {
@@ -27,7 +24,7 @@ public class EmployeeService {
     }
 
     public void assignGuestRoom(int guestId, Room room) {
-        for (Guest guest : GuestList.guests) {
+        for (Guest guest : DataBase.guests) {
             if (guest.getGuestID() == guestId) {
                 guest.setRoom(room);
             }
@@ -35,7 +32,7 @@ public class EmployeeService {
     }
 
     public void assignGuestServices(int guestId, List<Service> services) {
-        for (Guest guest : GuestList.guests) {
+        for (Guest guest : DataBase.guests) {
             if (guest.getGuestID() == guestId) {
                 guest.setServices(services);
                 for (Service service : services) {
@@ -46,9 +43,10 @@ public class EmployeeService {
     }
 
 
+    //after 2 days within 2 days
     public void viewNearCheckouts() {
         System.out.println("Checkouts within TWO days: " + "\n");
-        for (Guest guest : GuestList.guests) {
+        for (Guest guest : DataBase.guests) {
             if ((guest.getCheckout().minusDays(2).equals(LocalDate.now()))) {
                 System.out.println(guest.toString());
             }
@@ -56,7 +54,7 @@ public class EmployeeService {
     }
 
     public void todayCheckouts() {
-        for (Guest guest : GuestList.guests) {
+        for (Guest guest : DataBase.guests) {
             if ((guest.getCheckout()).equals(LocalDate.now())) {
                 System.out.println(guest.toString());
             }
@@ -65,7 +63,7 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllEmployees() {
-        return Employees;
+        return DataBase.employees;
     }
 
 }

@@ -23,10 +23,11 @@ public class Guest {
     private static int count;
     private List<Service> services;
     private long noOfDays;
-//222
+
     public Guest(int guestID, String name, String natID, Room room, LocalDate checkout) {
         reservationDate = LocalDate.now();
         room.setOccupied(false);
+        this.guestID = guestID;
         this.name = name;
         this.natID = natID;
         this.room = room;
