@@ -1,12 +1,10 @@
 import Model.Guest;
 import Service.GuestService;
+import Service.ServiceService;
 
 public class Main {
     public static void main(String[] args) {
-//        Guest guest = new Guest();
-//        guest.setGuestID(5);
-
-        GuestService guestService = new GuestService();
-        System.out.println(guestService.getAllGuests());
+        ServiceService serviceService = new ServiceService();
+        System.out.println(serviceService.getStatisticalReport().toString());
     }
 }

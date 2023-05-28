@@ -1,17 +1,19 @@
 package Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
 
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class Employee {
-    private int empID;
-    private String name;
+@Getter
+@Setter
+
+public class Employee extends Person{
     private double salary;
     private static int count = 0;
+    public Employee(int id, String name,double salary){
+        super(id, name);
+        this.salary=salary;
+    }
 }

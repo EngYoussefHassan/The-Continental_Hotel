@@ -11,12 +11,15 @@ import java.util.List;
 
 public class EmployeeService {
 
+    private static int count = 0;
+
+    //id incriminted in main
     public void AddEmp(Employee employee) {
         DataBase.employees.add(employee);
     }
 
     public void deleteEmp(int Id) {
-        DataBase.employees.removeIf(emp -> emp.getEmpID() == Id);
+        DataBase.employees.removeIf(emp -> emp.getId() == Id);
     }
 
     public void updateEmpSalary(Employee emp, float newSalary) {
@@ -25,7 +28,7 @@ public class EmployeeService {
 
     public void assignGuestRoom(int guestId, Room room) {
         for (Guest guest : DataBase.guests) {
-            if (guest.getGuestID() == guestId) {
+            if (guest.getId() == guestId) {
                 guest.setRoom(room);
             }
         }
@@ -33,13 +36,17 @@ public class EmployeeService {
 
     public void assignGuestServices(int guestId, List<Service> services) {
         for (Guest guest : DataBase.guests) {
-            if (guest.getGuestID() == guestId) {
+            if (guest.getId() == guestId) {
                 guest.setServices(services);
                 for (Service service : services) {
-                    service.getGuests().add(guest);
+                    service.setGuestsSubscribed(++count);
                 }
             }
         }
+
+    }
+    public List<Service> viewAllServices(){
+        return DataBase.services;
     }
 
 

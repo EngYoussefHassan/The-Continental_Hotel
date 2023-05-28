@@ -13,7 +13,7 @@ public class GuestService {
     }
 
     public void deleteGuest(int Id) {
-        DataBase.guests = DataBase.guests.stream().filter(g -> g.getGuestID() != Id).collect(Collectors.toList());
+        DataBase.guests = DataBase.guests.stream().filter(g -> g.getId() != Id).collect(Collectors.toList());
     }
 
     public void updateGuestRoom(Guest guest, Room newRoom) {

@@ -46,16 +46,16 @@ public class RoomService {
         }
     }
 
-    public void filterBusyRoomTypeServices(boolean state, RoomType roomType, List<Service> services) {
-        for (Guest guest : DataBase.guests) {
-            for (Room room : DataBase.rooms) {
-                if (room.isOccupied() == state && guest.getServices() == services && room.getRoomType() == roomType) {
-                    System.out.println(room.toString());
-                }
-
-            }
-        }
-    }
+//    public void filterBusyRoomTypeServices(boolean state, RoomType roomType, List<Service> services) {
+//        for (Guest guest : DataBase.guests) {
+//            for (Room room : DataBase.rooms) {
+//                if (room.isOccupied() == state && guest.getServices() == services && room.getRoomType() == roomType) {
+//                    System.out.println(room.toString());
+//                }
+//
+//            }
+//        }
+//    }
 
     public List<Room> getAllRooms() {
         return DataBase.rooms;

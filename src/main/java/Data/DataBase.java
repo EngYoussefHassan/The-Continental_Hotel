@@ -1,15 +1,19 @@
 package Data;
 
 import Model.*;
+import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+@ToString
 
 public class DataBase {
     public static int empCounter = 0;
     public static int guestCounter = 0;
     public static int serviceCounter = 0;
+    public static int guestsSubscribed = 0;
     public static List<Employee> employees = new ArrayList<>();
 
     static {
@@ -38,21 +42,22 @@ public class DataBase {
         rooms.add(new Room(314, RoomType.SUITE,false,1500));
         rooms.add(new Room(315, RoomType.SUITE,false,1500));
     }
+
+    public static List<Service> services = new ArrayList<>();
+    static {
+        services.add(new Service(++serviceCounter,"Air Conditioning", 150,0));
+        services.add(new Service(++serviceCounter,"All inclusive", 350,0));
+        services.add(new Service(++serviceCounter,"Ironing Services", 200,0));
+        services.add(new Service(++serviceCounter,"Laundry Services", 200,0));
+        services.add(new Service(++serviceCounter,"Dry Cleaning", 250,0));
+    }
     public static List<Guest> guests = new ArrayList<Guest>();
     static {
-        guests.add(new Guest(++guestCounter,"Andrew Tate","2010405060",rooms.get(2),LocalDate.of(2023,7,23)));
+        guests.add(new Guest(++guestCounter,"Andrew Tate","2010405060",rooms.get(2),LocalDate.of(2023,7,23),services,++guestsSubscribed));
         guests.add(new Guest(++guestCounter,"Polly Grey","2010405060",rooms.get(4),LocalDate.of(2023,6,2)));
-        guests.add(new Guest(++guestCounter,"Winston Churchill","2010405060",rooms.get(6),LocalDate.of(2023,5,28)));
-        guests.add(new Guest(++guestCounter,"Oswald Mosley","2010405060",rooms.get(8),LocalDate.of(2023,7,23)));
-        guests.add(new Guest(++guestCounter,"Rick Grimes","2010405060",rooms.get(12),LocalDate.of(2023,5,27)));
+        guests.add(new Guest(++guestCounter,"Winston Churchill","2010405060",rooms.get(6),LocalDate.of(2023,5,28),services,++guestsSubscribed));
+        guests.add(new Guest(++guestCounter,"Oswald Mosley","2010405060",rooms.get(8),LocalDate.of(2023,7,23),services,++guestsSubscribed));
+        guests.add(new Guest(++guestCounter,"Rick Grimes","2010405060",rooms.get(12),LocalDate.of(2023,5,27),services,++guestsSubscribed));
         guests.add(new Guest(++guestCounter,"Lou Bloom","2010405060",rooms.get(13),LocalDate.of(2023,6,23)));
-    }
-    static public List<Service> services = new ArrayList<>();
-    static {
-        services.add(new Service(++serviceCounter,"Air Conditioning", 150));
-        services.add(new Service(++serviceCounter,"All inclusive", 350));
-        services.add(new Service(++serviceCounter,"Ironing Services", 200));
-        services.add(new Service(++serviceCounter,"Laundry Services", 200));
-        services.add(new Service(++serviceCounter,"Dry Cleaning", 250));
     }
 }
