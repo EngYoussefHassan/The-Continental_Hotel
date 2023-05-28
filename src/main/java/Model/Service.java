@@ -11,19 +11,19 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @Data
+@AllArgsConstructor
 
 public class Service {
     private int serviceID;
     private String serviceName;
     private double price;
-    //private List<Guest> guests;
+    private static int count = 0;
     private int guestsSubscribed;
 
-    public Service(int serviceID, String serviceName, double price, int guestsSubscribed) {
+    public Service(String serviceName, double price) {
         this.serviceName = serviceName;
-        this.serviceID = serviceID;
         this.price = price;
-        this.guestsSubscribed = guestsSubscribed;
+        serviceID = ++count;
     }
 
 }

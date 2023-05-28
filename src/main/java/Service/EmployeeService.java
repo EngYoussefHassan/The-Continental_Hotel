@@ -14,43 +14,47 @@ public class EmployeeService {
     private static int count = 0;
 
     //id incriminted in main
-    public void AddEmp(Employee employee) {
+    public void addEmp(Employee employee) {
         DataBase.employees.add(employee);
     }
 
     public void deleteEmp(int Id) {
-        DataBase.employees.removeIf(emp -> emp.getId() == Id);
+        DataBase.employees.removeIf(emp -> emp.getEmpId() == Id);
     }
 
-    public void updateEmpSalary(Employee emp, float newSalary) {
-        emp.setSalary(newSalary);
+    public void updateEmpSalary(int id, double newSalary) {
+        for (Employee employee : DataBase.employees) {
+            if (employee.getEmpId() == id) {
+                employee.setSalary(newSalary);
+            }
+        }
     }
 
-    public void assignGuestRoom(int guestId, Room room) {
+    public void assignGuestRoom(int guestId, int roomNo) {
         for (Guest guest : DataBase.guests) {
-            if (guest.getId() == guestId) {
-                guest.setRoom(room);
+            for (Room room : DataBase.rooms) {
+                if (room.getRoomNo() == roomNo) {
+                    if (guest.getGuestId() == guestId) {
+                        guest.setRoom(room);
+                    }
+                }
             }
         }
     }
 
     public void assignGuestServices(int guestId, List<Service> services) {
         for (Guest guest : DataBase.guests) {
-            if (guest.getId() == guestId) {
+            if (guest.getGuestId() == guestId) {
                 guest.setServices(services);
                 for (Service service : services) {
                     service.setGuestsSubscribed(++count);
                 }
             }
         }
-
     }
-    public List<Service> viewAllServices(){
-        return DataBase.services;
-    }
-
 
     //after 2 days within 2 days
+
     public void viewNearCheckouts() {
         System.out.println("Checkouts within TWO days: " + "\n");
         for (Guest guest : DataBase.guests) {
@@ -60,7 +64,7 @@ public class EmployeeService {
         }
     }
 
-    public void todayCheckouts() {
+    public void viewTodayCheckouts() {
         for (Guest guest : DataBase.guests) {
             if ((guest.getCheckout()).equals(LocalDate.now())) {
                 System.out.println(guest.toString());
@@ -69,7 +73,7 @@ public class EmployeeService {
 
     }
 
-    public List<Employee> getAllEmployees() {
+    public List<Employee> viewAllEmployees() {
         return DataBase.employees;
     }
 

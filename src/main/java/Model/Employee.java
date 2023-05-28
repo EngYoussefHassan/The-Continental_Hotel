@@ -9,11 +9,14 @@ import lombok.*;
 @Getter
 @Setter
 
-public class Employee extends Person{
+public class Employee extends Person {
     private double salary;
+    private int empId;
     private static int count = 0;
-    public Employee(int id, String name,double salary){
-        super(id, name);
-        this.salary=salary;
+
+    public Employee(String name, double salary) {
+        super(name);
+        this.empId = ++count + 1000;
+        this.salary = salary;
     }
 }

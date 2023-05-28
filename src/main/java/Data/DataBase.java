@@ -17,10 +17,10 @@ public class DataBase {
     public static List<Employee> employees = new ArrayList<>();
 
     static {
-        employees.add(new Employee(++empCounter,"Johnny Dogs",2500 ));
-        employees.add(new Employee(++empCounter,"Curley",2500 ));
-        employees.add(new Employee(++empCounter,"Isaiah",2500 ));
-        employees.add(new Employee(++empCounter,"Jeremiah",2500 ));
+        employees.add(new Employee("Johnny Dogs",2500 ));
+        employees.add(new Employee("Curley",2500 ));
+        employees.add(new Employee("Isaiah",2500 ));
+        employees.add(new Employee("Jeremiah",2500 ));
 
     }
 
@@ -53,11 +53,11 @@ public class DataBase {
     }
     public static List<Guest> guests = new ArrayList<Guest>();
     static {
-        guests.add(new Guest(++guestCounter,"Andrew Tate","2010405060",rooms.get(2),LocalDate.of(2023,7,23),services,++guestsSubscribed));
-        guests.add(new Guest(++guestCounter,"Polly Grey","2010405060",rooms.get(4),LocalDate.of(2023,6,2)));
-        guests.add(new Guest(++guestCounter,"Winston Churchill","2010405060",rooms.get(6),LocalDate.of(2023,5,28),services,++guestsSubscribed));
-        guests.add(new Guest(++guestCounter,"Oswald Mosley","2010405060",rooms.get(8),LocalDate.of(2023,7,23),services,++guestsSubscribed));
-        guests.add(new Guest(++guestCounter,"Rick Grimes","2010405060",rooms.get(12),LocalDate.of(2023,5,27),services,++guestsSubscribed));
-        guests.add(new Guest(++guestCounter,"Lou Bloom","2010405060",rooms.get(13),LocalDate.of(2023,6,23)));
+        guests.add(new Guest("Andrew Tate","2010405060",rooms.get(2),LocalDate.of(2023,7,23),services,++guestsSubscribed));
+        guests.add(new Guest("Polly Grey","2010405060",rooms.get(4),LocalDate.of(2023,6,2)));
+        guests.add(new Guest("Winston Churchill","2010405060",rooms.get(6),LocalDate.of(2023,5,28),services,++guestsSubscribed));
+        guests.add(new Guest("Oswald Mosley","2010405060",rooms.get(8),LocalDate.of(2023,7,23),services,++guestsSubscribed));
+        guests.add(new Guest("Rick Grimes","2010405060",rooms.get(12),LocalDate.of(2023,5,27),services,++guestsSubscribed));
+        guests.add(new Guest("Lou Bloom","2010405060",rooms.get(13),LocalDate.of(2023,6,23)));
     }
 }

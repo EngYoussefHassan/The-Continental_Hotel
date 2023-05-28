@@ -1,5 +1,6 @@
 package Service;
 
+import Data.DataBase;
 import Model.Guest;
 import Model.RoomType;
 import Model.Service;
@@ -7,25 +8,39 @@ import Model.Service;
 import java.time.temporal.ChronoUnit;
 
 public class GuestBillingService {
-    public double calcReservationCost(Guest guest) {
+    public double calcReservationCost(int guestId) {
         double cost = 0.0;
-        if (guest.getRoom().getRoomType() == RoomType.SINGLE) {
-            cost = guest.getNoOfDays() * 800;
-        } else if (guest.getRoom().getRoomType() == RoomType.DOUBLE) {
-            cost = guest.getNoOfDays() * 1000;
-        } else cost = guest.getNoOfDays() * 1500;
-        return cost;
-    }
+        for (Guest guest : DataBase.guests) {
+            if (guest.getGuestId() == guestId) {
 
-    public double calcCostOfServices(Guest guest) {
-        double cost = 0.0;
-        for(Service service : guest.getServices()){
-            cost = service.getPrice()*guest.getNoOfDays();
+                if (guest.getRoom().getRoomType() == RoomType.SINGLE) {
+                    cost = guest.getNoOfDays() * guest.getRoom().getRoomCost();
+                } else if (guest.getRoom().getRoomType() == RoomType.DOUBLE) {
+                    cost = guest.getNoOfDays() * guest.getRoom().getRoomCost();
+                } else cost = guest.getNoOfDays() * guest.getRoom().getRoomCost();
+
+            }
         }
         return cost;
     }
 
-    public double calcGuestInvoice(Guest guest) {
-        return calcReservationCost(guest) + calcCostOfServices(guest);
+
+    public double calcCostOfServices(int guestId) {
+        double cost = 0.0;
+        for (Guest guest : DataBase.guests) {
+            if (guest.getGuestId() == guestId) {
+
+                for (Service service : guest.getServices()) {
+                    cost = service.getPrice() * guest.getNoOfDays();
+                }
+            }
+        }
+        return cost;
     }
+
+
+    public double calcGuestInvoice(int guestId) {
+        return calcReservationCost(guestId) + calcCostOfServices(guestId);
+    }
+
 }

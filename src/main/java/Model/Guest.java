@@ -19,9 +19,12 @@ public class Guest extends Person{
     private List<Service> services;
     private static int guestCount = 0;
     private long noOfDays;
+    private int guestId;
+    private static int count = 0;
 
-    public Guest(int id, String name, String natID, Room room, LocalDate checkout) {
-        super(id, name);
+    public Guest(String name, String natID, Room room, LocalDate checkout) {
+        super(name);
+        this.guestId = ++count;
         reservationDate = LocalDate.now();
         room.setOccupied(false);
         this.natID = natID;
@@ -30,8 +33,9 @@ public class Guest extends Person{
         noOfDays = reservationDate.until(checkout, ChronoUnit.DAYS);
     }
 
-    public Guest(int id, String name, String natID, Room room, LocalDate checkout, List<Service> services,int guestCount) {
-        super(id, name);
+    public Guest(String name, String natID, Room room, LocalDate checkout, List<Service> services,int guestCount) {
+        super(name);
+        this.guestId = ++count;
         this.services = services;
         reservationDate = LocalDate.now();
         room.setOccupied(false);
