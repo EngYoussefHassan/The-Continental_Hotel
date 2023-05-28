@@ -110,12 +110,15 @@ public class Main {
                         }
                         case 6: {
                             employeeService.viewNearCheckouts();
+                            break;
                         }
                         case 7: {
                             employeeService.viewTodayCheckouts();
+                            break;
                         }
                         case 8: {
                             System.out.println(employeeService.viewAllEmployees());
+                            break;
                         }
                     }
                     break;
@@ -171,12 +174,14 @@ public class Main {
                             guestId = scanner.nextInt();
                             guestService.deleteGuest(guestId);
                             System.out.println("Room deleted successfully!");
+                            break;
                         }
                         case 4: {
                             System.out.println(guestService.getAllGuests());
+                            break;
                         }
                     }
-
+                    break;
                 }
                 case 3: {
                     System.out.println("Please choose Wisely");
@@ -231,7 +236,6 @@ public class Main {
                             System.out.println(roomService.getAllRooms());
                             break;
                         }
-
                     }
                     break;
                 }
@@ -273,6 +277,7 @@ public class Main {
                             break;
                         }
                     }
+                    break;
                 }
                 case 5: {
                     System.out.println("Please choose wisely:");
@@ -307,6 +312,7 @@ public class Main {
                 }
                 case 6: {
                     System.out.println(serviceService.getStatisticalReport());
+                    break;
                 }
             }
         }
