@@ -10,8 +10,8 @@ import lombok.*;
 @Setter
 
 public class Employee extends Person {
-    private double salary;
     private int empId;
+    private double salary;
     private static int count = 0;
 
     public Employee(String name, double salary) {
