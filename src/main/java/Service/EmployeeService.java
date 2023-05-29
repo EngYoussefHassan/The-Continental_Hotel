@@ -70,11 +70,21 @@ public class EmployeeService {
                 System.out.println(guest.toString());
             }
         }
+    }
 
+    public boolean doesEmpExist(int id) {
+        boolean state = false;
+        int flag = 0;
+        for (Employee employee : DataBase.employees) {
+            if (employee.getEmpId() == id) {
+                state = true;
+                break;
+            }
+        }
+        return state;
     }
 
     public List<Employee> viewAllEmployees() {
         return DataBase.employees;
     }
-
 }

@@ -3,7 +3,7 @@ package Model;
 import lombok.*;
 
 
-@ToString
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -18,5 +18,14 @@ public class Employee extends Person {
         super(name);
         this.empId = ++count + 1000;
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{ " +
+                "Name= " + getName()+
+                ", salary=" + salary +
+                ", empId=" + empId +
+                " }" + "\n";
     }
 }

@@ -60,10 +60,12 @@ public class Main {
                             double salary;
                             System.out.println("Enter Employee's ID: ");
                             id = scanner.nextInt();
-                            System.out.println("Please enter updated salary: ");
-                            salary = scanner.nextDouble();
-                            employeeService.updateEmpSalary(id, salary);
-                            System.out.println("Employee Updated Successfully!");
+                            if(Objects.equals(employeeService.doesEmpExist(id),true)){
+                                System.out.println("Please enter updated salary: ");
+                                salary = scanner.nextDouble();
+                                employeeService.updateEmpSalary(id, salary);
+                                System.out.println("Employee Updated Successfully!");
+                            }else System.out.println("Not found");
                             break;
 
                         }
@@ -71,8 +73,10 @@ public class Main {
                             int id;
                             System.out.println("Enter Employee's ID");
                             id = scanner.nextInt();
-                            employeeService.deleteEmp(id);
-                            System.out.println("Employee Deleted Successfully!");
+                            if(Objects.equals(employeeService.doesEmpExist(id),true)){
+                                employeeService.deleteEmp(id);
+                                System.out.println("Employee Deleted Successfully!");
+                            }else System.out.println("Employee not found");
                             break;
                         }
                         case 4: {
@@ -80,10 +84,15 @@ public class Main {
                             int roomNo;
                             System.out.println("Enter Guest's Id:");
                             id = scanner.nextInt();
-                            System.out.println("Enter Room Number to be assigned to: ");
-                            roomNo = scanner.nextInt();
-                            employeeService.assignGuestRoom(id, roomNo);
-                            System.out.println("Guest Assigned Successfully");
+                            if(Objects.equals(guestService.doesGuestExist(id),true)){
+                                System.out.println("Enter Room Number to be assigned to: ");
+                                roomNo = scanner.nextInt();
+                                if(Objects.equals(roomService.doesRoomExist(roomNo),true)){
+                                    employeeService.assignGuestRoom(id, roomNo);
+                                    System.out.println("Guest Assigned Successfully");
+                                }else System.out.println("Room not found!");
+                            }else System.out.println("Guest not found!");
+
                             break;
                         }
                         case 5: {
@@ -93,19 +102,23 @@ public class Main {
                             List<Service> services = new ArrayList<>();
                             System.out.println("Enter Guest ID: ");
                             id = scanner.nextInt();
-                            System.out.println("How Many services Would you like to add?");
-                            noOfServices = scanner.nextInt();
-                            for (int i = 0; i < noOfServices; i++) {
-                                System.out.println("Please enter Service Name:");
-                                serviceId = scanner.nextInt();
-                                for (Service service : DataBase.services) {
-                                    if (service.getServiceID() == serviceId) {
-                                        services.add(service);
-                                    }
+                            if(Objects.equals(guestService.doesGuestExist(id),true)){
+                                System.out.println("How Many services Would you like to add?");
+                                noOfServices = scanner.nextInt();
+                                for (int i = 0; i < noOfServices; i++) {
+                                    System.out.println("Please enter Service Id:");
+                                    serviceId = scanner.nextInt();
+                                    if(Objects.equals(serviceService.doesServiceExist(id),true)){
+                                        for (Service service : DataBase.services) {
+                                            if (service.getServiceID() == serviceId) {
+                                                services.add(service);
+                                            }
+                                        }
+                                        employeeService.assignGuestServices(id, services);
+                                        System.out.println("Services Assigned To Guest!");
+                                    }else System.out.println("Service not found!");
                                 }
-                            }
-                            employeeService.assignGuestServices(id, services);
-                            System.out.println("Services Assigned To Guest!");
+                            }else System.out.println("Guest not found!");
                             break;
                         }
                         case 6: {
@@ -162,18 +175,24 @@ public class Main {
                             int roomNo;
                             System.out.println("Enter Guest ID:");
                             guestId = scanner.nextInt();
-                            System.out.println("Enter Room Number:");
-                            roomNo = scanner.nextInt();
-                            guestService.updateGuestRoom(guestId, roomNo);
-                            System.out.println("Guest updated successfully!");
+                            if(Objects.equals(guestService.doesGuestExist(guestId),true)){
+                                System.out.println("Enter Room Number:");
+                                roomNo = scanner.nextInt();
+                                if(Objects.equals(roomService.doesRoomExist(roomNo),true)){
+                                    guestService.updateGuestRoom(guestId, roomNo);
+                                    System.out.println("Guest updated successfully!");
+                                }else System.out.println("Room not found!");
+                            }else System.out.println("Guest not found!");
                             break;
                         }
                         case 3: {
                             int guestId;
-                            System.out.println("Enter Room Number:");
+                            System.out.println("Enter guest ID");
                             guestId = scanner.nextInt();
-                            guestService.deleteGuest(guestId);
-                            System.out.println("Room deleted successfully!");
+                            if(Objects.equals(guestService.doesGuestExist(guestId),true)){
+                                guestService.deleteGuest(guestId);
+                                System.out.println("Guest deleted Successfully!");
+                            }else System.out.println("Guest not found!");
                             break;
                         }
                         case 4: {
@@ -209,16 +228,21 @@ public class Main {
                             int roomNo;
                             System.out.println("Enter Room number: ");
                             roomNo = scanner.nextInt();
-                            roomService.updateRoomAvailability(roomNo);
-                            System.out.println("Room " + roomNo + " is now Available!");
+                            if(Objects.equals(roomService.doesRoomExist(roomNo),true)){
+                                roomService.updateRoomAvailability(roomNo);
+                                System.out.println("Room " + roomNo + " is now Available!");
+                            }else System.out.println("Room not found!");
                             break;
                         }
                         case 3: {
                             int id;
                             System.out.println("Enter Room number:");
                             id = scanner.nextInt();
-                            roomService.deleteRoom(id);
-                            System.out.println("Room deleted successfully!");
+                            if(Objects.equals(roomService.doesRoomExist(id),true)){
+                                roomService.deleteRoom(id);
+                                System.out.println("Room deleted successfully!");
+                            }else System.out.println("Room not found!");
+
                             break;
                         }
                         case 4: {
@@ -260,8 +284,10 @@ public class Main {
                             int id;
                             System.out.println("Please enter ID:");
                             id = scanner.nextInt();
-                            serviceService.deleteService(id);
-                            System.out.println("Service Removed Successfully!");
+                            if(Objects.equals(serviceService.doesServiceExist(id),true)){
+                                serviceService.deleteService(id);
+                                System.out.println("Service Removed Successfully!");
+                            }else System.out.println("Service not found!");
                             break;
 
                         }
@@ -270,10 +296,12 @@ public class Main {
                             double price;
                             System.out.println("Please enter ID:");
                             id = scanner.nextInt();
-                            System.out.println("Enter new price:");
-                            price = scanner.nextDouble();
-                            serviceService.updateService(id, price);
-                            System.out.println("Service Updated Successfully!");
+                            if(Objects.equals(serviceService.doesServiceExist(id),true)){
+                                System.out.println("Enter new price:");
+                                price = scanner.nextDouble();
+                                serviceService.updateService(id, price);
+                                System.out.println("Service Updated Successfully!");
+                            }else System.out.println("Service not found!");
                             break;
                         }
                     }
@@ -289,14 +317,19 @@ public class Main {
                             int id;
                             System.out.println("Enter guest's ID:");
                             id = scanner.nextInt();
-                            System.out.println(guestBillingService.calcReservationCost(id));
+                            if(Objects.equals(guestService.doesGuestExist(id),true)){
+                                System.out.println(guestBillingService.calcReservationCost(id));
+                            }else System.out.println("Guest not found!");
+
                             break;
                         }
                         case 2: {
                             int id;
                             System.out.println("Enter guest's ID");
                             id = scanner.nextInt();
-                            System.out.println(guestBillingService.calcCostOfServices(id));
+                            if(Objects.equals(guestService.doesGuestExist(id),true)){
+                                System.out.println(guestBillingService.calcCostOfServices(id));
+                            }else System.out.println("Guest not found!");
                             break;
 
                         }
@@ -304,7 +337,9 @@ public class Main {
                             int id;
                             System.out.println("Enter guest's ID:");
                             id = scanner.nextInt();
-                            System.out.println(guestBillingService.calcGuestInvoice(id));
+                            if(Objects.equals(guestService.doesGuestExist(id),true)){
+                                System.out.println(guestBillingService.calcGuestInvoice(id));
+                            }else System.out.println("Guest not found!");
                             break;
                         }
                     }

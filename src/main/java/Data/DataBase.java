@@ -60,4 +60,5 @@ public class DataBase {
         guests.add(new Guest("Rick Grimes","2010405060",rooms.get(12),LocalDate.of(2023,5,27),services,++guestsSubscribed));
         guests.add(new Guest("Lou Bloom","2010405060",rooms.get(13),LocalDate.of(2023,6,23)));
     }
+
 }

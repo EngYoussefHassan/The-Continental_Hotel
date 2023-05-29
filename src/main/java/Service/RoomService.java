@@ -1,6 +1,7 @@
 package Service;
 
 import Data.DataBase;
+import Model.Employee;
 import Model.Room;
 import Model.RoomType;
 
@@ -79,6 +80,17 @@ public class RoomService {
 
     public List<Room> getAllRooms() {
         return DataBase.rooms;
+    }
+    public boolean doesRoomExist(int roomNo) {
+        boolean state = false;
+        int flag = 0;
+        for (Room room : DataBase.rooms) {
+            if (room.getRoomNo() == roomNo) {
+                state = true;
+                break;
+            }
+        }
+        return state;
     }
 
 }

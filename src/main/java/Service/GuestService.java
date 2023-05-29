@@ -1,6 +1,7 @@
 package Service;
 
 import Data.DataBase;
+import Model.Employee;
 import Model.Guest;
 import Model.Room;
 
@@ -32,7 +33,17 @@ public class GuestService {
         }
 
     }
-
+    public boolean doesGuestExist(int id) {
+        boolean state = false;
+        int flag = 0;
+        for (Guest guest : DataBase.guests) {
+            if (guest.getGuestId() == id) {
+                state = true;
+                break;
+            }
+        }
+        return state;
+    }
 
     public List<Guest> getAllGuests() {
         return DataBase.guests;

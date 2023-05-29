@@ -9,7 +9,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 
 public class Guest extends Person{
     private String natID;
@@ -46,5 +45,18 @@ public class Guest extends Person{
         for(Service service : services){
             service.setGuestsSubscribed(guestCount);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "natID='" + natID + '\'' +
+                ", room=" + room +
+                ", reservationDate=" + reservationDate +
+                ", checkout=" + checkout +
+                ", services=" + services +
+                ", noOfDays=" + noOfDays +
+                ", guestId=" + guestId +
+                '}' + "\n";
     }
 }
