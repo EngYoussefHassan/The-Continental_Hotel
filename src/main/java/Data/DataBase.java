@@ -51,6 +51,7 @@ public class DataBase {
         services.add(new Service(++serviceCounter,"Laundry Services", 200,0));
         services.add(new Service(++serviceCounter,"Dry Cleaning", 250,0));
     }
+
     public static List<Guest> guests = new ArrayList<Guest>();
     static {
         guests.add(new Guest("Andrew Tate","2010405060",rooms.get(2),LocalDate.of(2023,7,23),services,++guestsSubscribed));
@@ -60,5 +61,4 @@ public class DataBase {
         guests.add(new Guest("Rick Grimes","2010405060",rooms.get(12),LocalDate.of(2023,5,27),services,++guestsSubscribed));
         guests.add(new Guest("Lou Bloom","2010405060",rooms.get(13),LocalDate.of(2023,6,23)));
     }
-
 }

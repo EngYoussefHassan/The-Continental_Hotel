@@ -8,7 +8,6 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 
-@ToString
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
@@ -26,4 +25,13 @@ public class Service {
         serviceID = ++count;
     }
 
+    @Override
+    public String toString() {
+        return "Service{" +
+                "serviceID=" + serviceID +
+                ", serviceName='" + serviceName + '\'' +
+                ", price=" + price +
+                ", guestsSubscribed=" + guestsSubscribed +
+                '}' + "\n";
+    }
 }
