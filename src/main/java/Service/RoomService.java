@@ -1,7 +1,6 @@
 package Service;
 
 import Data.DataBase;
-import Model.Employee;
 import Model.Room;
 import Model.RoomType;
 
@@ -11,7 +10,7 @@ import java.util.Objects;
 public class RoomService {
 
 
-    public void addRoom(int roomNo, String roomType) {
+    public static void addRoom(int roomNo, String roomType) {
         double cost;
         RoomType roomTypeEnum;
         if (Objects.equals(roomType, "Single") || Objects.equals(roomType, "single") || Objects.equals(roomType, "SINGLE")) {
@@ -27,8 +26,8 @@ public class RoomService {
             roomTypeEnum = RoomType.SUITE;
             DataBase.rooms.add(new Room(roomNo, roomTypeEnum, false, cost));
         }
-
     }
+
 
     public void deleteRoom(int Id) {
         DataBase.rooms.removeIf(room -> room.getRoomNo() == Id);

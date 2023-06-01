@@ -14,7 +14,7 @@ public class EmployeeService {
     private static int count = 0;
 
     //id incriminted in main
-    public void addEmp(Employee employee) {
+    public static void addEmp(Employee employee) {
         DataBase.employees.add(employee);
     }
 
