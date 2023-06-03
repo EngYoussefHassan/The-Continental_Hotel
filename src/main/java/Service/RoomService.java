@@ -4,6 +4,7 @@ import Data.DataBase;
 import Model.Room;
 import Model.RoomType;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,23 +18,26 @@ public class RoomService {
             cost = 800;
             roomTypeEnum = RoomType.SINGLE;
             DataBase.rooms.add(new Room(roomNo, roomTypeEnum, false, cost));
+            JOptionPane.showMessageDialog(null,"Room Added Successfully!");
         } else if (Objects.equals(roomType, "Double") || Objects.equals(roomType, "double") || Objects.equals(roomType, "DOUBLE")) {
             cost = 1000;
             roomTypeEnum = RoomType.DOUBLE;
             DataBase.rooms.add(new Room(roomNo, roomTypeEnum, false, cost));
+            JOptionPane.showMessageDialog(null,"Room Added Successfully!");
         } else if (Objects.equals(roomType, "Suite") || Objects.equals(roomType, "suite") || Objects.equals(roomType, "SUITE")) {
             cost = 1500;
             roomTypeEnum = RoomType.SUITE;
             DataBase.rooms.add(new Room(roomNo, roomTypeEnum, false, cost));
-        }
+            JOptionPane.showMessageDialog(null,"Room Added Successfully!");
+        }else JOptionPane.showMessageDialog(null,"RoomType not valid!");
     }
 
 
-    public void deleteRoom(int Id) {
+    public static void deleteRoom(int Id) {
         DataBase.rooms.removeIf(room -> room.getRoomNo() == Id);
     }
 
-    public void updateRoomAvailability(int roomNo) {
+    public static void updateRoomAvailability(int roomNo) {
         for (Room room : DataBase.rooms) {
             if (room.getRoomNo() == roomNo) {
                 room.setOccupied(false);
@@ -46,33 +50,36 @@ public class RoomService {
      * on what you call from MAIN
      **/
 
-    public void filterBusy(boolean state) {
+    public static void filterBusy(boolean state) {
         for (Room room : DataBase.rooms) {
-            if (room.isOccupied() == state)
-                System.out.println(room.toString());
+            if (room.isOccupied() == state){
+                JOptionPane.showMessageDialog(null,room.toString(),"FreeRooms", JOptionPane.PLAIN_MESSAGE);
+            }
+
         }
     }
 
-    public void filterBusyRoomType(boolean state, String roomType) {
+    public static void filterBusyRoomType(boolean state, String roomType) {
         RoomType roomTypeEnum;
 
         if (Objects.equals(roomType, "Single") || Objects.equals(roomType, "single") || Objects.equals(roomType, "SINGLE")) {
             roomTypeEnum = RoomType.SINGLE;
             for (Room room : DataBase.rooms) {
-                if (room.isOccupied() == state && Objects.equals(room.getRoomType(), roomTypeEnum))
-                    System.out.println(room.toString());
+                if (room.isOccupied() == state && Objects.equals(room.getRoomType(), roomTypeEnum)){
+                    JOptionPane.showMessageDialog(null,room.toString(),"FreeRoomsType", JOptionPane.PLAIN_MESSAGE);
+                }
             }
         } else if (Objects.equals(roomType, "Double") || Objects.equals(roomType, "double") || Objects.equals(roomType, "DOUBLE")) {
             roomTypeEnum = RoomType.DOUBLE;
             for (Room room : DataBase.rooms) {
                 if (room.isOccupied() == state && Objects.equals(room.getRoomType(), roomTypeEnum))
-                    System.out.println(room.toString());
+                    JOptionPane.showMessageDialog(null,room.toString(),"FreeRoomsType", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (Objects.equals(roomType, "Suite") || Objects.equals(roomType, "suite") || Objects.equals(roomType, "SUITE")) {
             roomTypeEnum = RoomType.DOUBLE;
             for (Room room : DataBase.rooms) {
                 if (room.isOccupied() == state && Objects.equals(room.getRoomType(), roomTypeEnum))
-                    System.out.println(room.toString());
+                    JOptionPane.showMessageDialog(null,room.toString(),"FreeRoomsType", JOptionPane.PLAIN_MESSAGE);
             }
         }
     }
@@ -80,7 +87,7 @@ public class RoomService {
     public List<Room> getAllRooms() {
         return DataBase.rooms;
     }
-    public boolean doesRoomExist(int roomNo) {
+    public static boolean doesRoomExist(int roomNo) {
         boolean state = false;
         int flag = 0;
         for (Room room : DataBase.rooms) {

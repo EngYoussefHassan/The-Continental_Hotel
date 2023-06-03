@@ -4,30 +4,36 @@ import Data.DataBase;
 import Model.Employee;
 import Model.Service;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.List;
 
 public class ServiceService {
 
     private static int count = 0;
-    public void addService(String serviceName ,double price) {
+    public static void addService(String serviceName ,double price) {
+
         Service service = new Service(++count,serviceName,price,0);
         DataBase.services.add(service);
+        JOptionPane.showMessageDialog(null,"Service added successfully");
     }
 
-    public void deleteService(int Id) {
+    public static void deleteService(int Id) {
+
         DataBase.services.removeIf(service -> service.getServiceID() == Id);
+        JOptionPane.showMessageDialog(null,"Service deleted successfully");
     }
 
-    public void updateService(int Id, double price) {
+    public static void updateService(int Id, double price) {
         for(Service service : DataBase.services){
             if(service.getServiceID() == Id){
                 service.setPrice(price);
                 service.setGuestsSubscribed(++count);
             }
         }
+        JOptionPane.showMessageDialog(null,"Service updated successfully");
     }
-    public boolean doesServiceExist(int id) {
+    public static boolean doesServiceExist(int id) {
         boolean state = false;
         int flag = 0;
         for (Service service:DataBase.services) {
@@ -38,7 +44,7 @@ public class ServiceService {
         }
         return state;
     }
-    public List<Service> getStatisticalReport(){
+    public static List<Service> getStatisticalReport(){
         return DataBase.services;
     }
 }

@@ -5,10 +5,11 @@ import Model.Guest;
 import Model.RoomType;
 import Model.Service;
 
+import javax.swing.*;
 import java.time.temporal.ChronoUnit;
 
 public class GuestBillingService {
-    public double calcReservationCost(int guestId) {
+    public static double calcReservationCost(int guestId) {
         double cost = 0.0;
         for (Guest guest : DataBase.guests) {
             if (guest.getGuestId() == guestId) {
@@ -21,11 +22,12 @@ public class GuestBillingService {
 
             }
         }
+
         return cost;
     }
 
 
-    public double calcCostOfServices(int guestId) {
+    public static double calcCostOfServices(int guestId) {
         double cost = 0.0;
         for (Guest guest : DataBase.guests) {
             if (guest.getGuestId() == guestId) {
@@ -39,7 +41,7 @@ public class GuestBillingService {
     }
 
 
-    public double calcGuestInvoice(int guestId) {
+    public static double calcGuestInvoice(int guestId) {
         return calcReservationCost(guestId) + calcCostOfServices(guestId);
     }
 

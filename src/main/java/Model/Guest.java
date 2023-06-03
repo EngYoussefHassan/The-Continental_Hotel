@@ -25,7 +25,7 @@ public class Guest extends Person{
         super(name);
         this.guestId = ++count;
         reservationDate = LocalDate.now();
-        room.setOccupied(false);
+        room.setOccupied(true);
         this.natID = natID;
         this.room = room;
         this.checkout = checkout;
@@ -37,7 +37,7 @@ public class Guest extends Person{
         this.guestId = ++count;
         this.services = services;
         reservationDate = LocalDate.now();
-        room.setOccupied(false);
+        room.setOccupied(true);
         this.natID = natID;
         this.room = room;
         this.checkout = checkout;
