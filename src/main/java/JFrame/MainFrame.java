@@ -3,10 +3,13 @@ package JFrame;
 import Methods.*;
 import Model.Employee;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,11 +17,24 @@ import java.util.Scanner;
 
 public class MainFrame extends JFrame {
     public MainFrame() {
-        Scanner scanner = new Scanner(System.in);
+
 
         // Create the main panel
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(2, 3));
+
+        ImageIcon imageIcon = new ImageIcon("hotel.jpg");
+        JLabel imageLabel = new JLabel(imageIcon);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(imageLabel, BorderLayout.CENTER);
+
+        add(panel);
+        setTitle("The Continental");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(1920, 1080);
+        setLocationRelativeTo(null);
+        setVisible(true);
 
         // Create the 6 buttons
 
@@ -39,17 +55,17 @@ public class MainFrame extends JFrame {
             this.add(buttons[i]);
         }
         buttons[0].setText("Employee Management");
-        buttons[0].setBounds(550, 90, 400, 50);
+        buttons[0].setBounds(550, 100, 400, 50);
         buttons[1].setText("Guest Management");
         buttons[1].setBounds(550, 180, 400, 50);
         buttons[2].setText("Room Management");
-        buttons[2].setBounds(550, 270, 400, 50);
+        buttons[2].setBounds(550, 260, 400, 50);
         buttons[3].setText("Service Management");
-        buttons[3].setBounds(550, 360, 400, 50);
+        buttons[3].setBounds(550, 340, 400, 50);
         buttons[4].setText("Guest Billing Services");
-        buttons[4].setBounds(550, 450, 400, 50);
+        buttons[4].setBounds(550, 420, 400, 50);
         buttons[5].setText("Statistical Report");
-        buttons[5].setBounds(550, 540, 400, 50);
+        buttons[5].setBounds(550, 500, 400, 50);
 
 
         // Add action listeners to each button
