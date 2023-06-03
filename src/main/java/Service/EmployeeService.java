@@ -1,10 +1,7 @@
 package Service;
 
 import Data.DataBase;
-import Model.Employee;
-import Model.Guest;
-import Model.Room;
-import Model.Service;
+import Model.*;
 
 import javax.swing.*;
 import java.time.LocalDate;
@@ -15,7 +12,6 @@ public class EmployeeService {
 
     private static int count = 0;
 
-    //id incriminted in main
     public static void addEmp(Employee employee) {
         DataBase.employees.add(employee);
     }
@@ -35,14 +31,14 @@ public class EmployeeService {
     public static void assignGuestRoom(int guestId, int roomNo) {
         for (Guest guest : DataBase.guests) {
             for (Room room : DataBase.rooms) {
-                if(Objects.equals(RoomService.doesRoomExist(roomNo),true)) {
+                if (Objects.equals(RoomService.doesRoomExist(roomNo), true)) {
                     if (room.getRoomNo() == roomNo) {
                         if (guest.getGuestId() == guestId) {
                             guest.setRoom(room);
                             room.setOccupied(true);
                         }
                     }
-                }else JOptionPane.showMessageDialog(null,"Room Not Found!");
+                } else JOptionPane.showMessageDialog(null, "Room Not Found!");
             }
         }
     }
@@ -58,25 +54,6 @@ public class EmployeeService {
         }
     }
 
-    //after 2 days within 2 days
-
-    public static void viewNearCheckouts() {
-        System.out.println("Checkouts within TWO days: " + "\n");
-        for (Guest guest : DataBase.guests) {
-            if ((guest.getCheckout().minusDays(2).equals(LocalDate.now()))) {
-                System.out.println(guest.toString());
-            }
-        }
-    }
-
-    public static void viewTodayCheckouts() {
-        for (Guest guest : DataBase.guests) {
-            if ((guest.getCheckout()).equals(LocalDate.now())) {
-                System.out.println(guest.toString());
-            }
-        }
-    }
-
     public static boolean doesEmpExist(int id) {
         boolean state = false;
         int flag = 0;
@@ -87,9 +64,5 @@ public class EmployeeService {
             }
         }
         return state;
-    }
-
-    public List<Employee> viewAllEmployees() {
-        return DataBase.employees;
     }
 }

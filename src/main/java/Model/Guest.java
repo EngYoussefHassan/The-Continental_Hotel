@@ -50,7 +50,8 @@ public class Guest extends Person{
     @Override
     public String toString() {
         return "Guest{" +
-                "natID='" + natID + '\'' +
+                "name= " + getName() +
+                ", natID='" + natID +
                 ", room=" + room +
                 ", reservationDate=" + reservationDate +
                 ", checkout=" + checkout +

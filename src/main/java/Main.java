@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.awt.*;
 import java.util.List;
+
 import JFrame.MainFrame;
 
 public class Main {
@@ -26,8 +27,6 @@ public class Main {
         clip.open(audioStream);
 
         clip.start();
-
-
 
 
         new MainFrame();

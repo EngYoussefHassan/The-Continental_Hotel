@@ -1,9 +1,7 @@
 package Methods;
 
 import Data.DataBase;
-import Model.Employee;
-import Model.Guest;
-import Model.Service;
+import Model.*;
 
 import Service.*;
 
@@ -18,10 +16,7 @@ import java.util.Scanner;
 
 public class EmployeeMethods {
     public static class addEmployee implements ActionListener {
-        Scanner scanner = new Scanner(System.in);
-
         public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
             String name = JOptionPane.showInputDialog(null, "Enter Employee's name: ");
             String input = JOptionPane.showInputDialog(null, "Enter Employee's salary: ");
             double salary = Double.parseDouble(input);
@@ -34,8 +29,6 @@ public class EmployeeMethods {
 
     public static class updateEmployee implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
-
 
             String input2 = JOptionPane.showInputDialog(null, "Enter Employee's ID: ");
             int Id = Integer.parseInt(input2);
@@ -50,8 +43,6 @@ public class EmployeeMethods {
 
     public static class deleteEmployee implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
-
             String input2 = JOptionPane.showInputDialog(null, "Enter Employee's ID: ");
             int Id = Integer.parseInt(input2);
             if (Objects.equals(EmployeeService.doesEmpExist(Id), true)) {
@@ -63,7 +54,6 @@ public class EmployeeMethods {
 
     public static class assignGuestRoom implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
 
             String input2 = JOptionPane.showInputDialog(null, "Enter Guest's ID: ");
             int Id = Integer.parseInt(input2);
@@ -107,7 +97,6 @@ public class EmployeeMethods {
 
     public static class viewNearCheckouts implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
             List<Guest> guests = new ArrayList<>();
             for (Guest guest : DataBase.guests) {
                 if ((guest.getCheckout().minusDays(2).equals(LocalDate.now()))) {
@@ -120,7 +109,6 @@ public class EmployeeMethods {
 
     public static class viewTodayCheckouts implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
             List<Guest> guests = new ArrayList<>();
             for (Guest guest : DataBase.guests) {
                 if ((guest.getCheckout()).equals(LocalDate.now())) {

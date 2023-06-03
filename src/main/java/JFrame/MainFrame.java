@@ -1,25 +1,16 @@
 package JFrame;
 
 import Methods.*;
-import Model.Employee;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 
 public class MainFrame extends JFrame {
     public MainFrame() {
 
 
-        // Create the main panel
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(2, 3));
 
@@ -36,12 +27,8 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // Create the 6 buttons
-
         JButton[] buttons = new JButton[7];
 
-
-        // Add the buttons to the main panel
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -68,7 +55,6 @@ public class MainFrame extends JFrame {
         buttons[5].setBounds(550, 500, 400, 50);
 
 
-        // Add action listeners to each button
         buttons[0].addActionListener(new Button1Listener());
         buttons[1].addActionListener(new Button2Listener());
         buttons[2].addActionListener(new Button3Listener());
@@ -76,11 +62,10 @@ public class MainFrame extends JFrame {
         buttons[4].addActionListener(new Button5Listener());
         buttons[5].addActionListener(new StatisticalReportMethods.statisticalReport());
 
-        // Add the main panel to the frame
+
         add(mainPanel);
 
-        // Set the size and show the frame
-        setSize(400, 200);
+        setSize(1920, 1080);
         setVisible(true);
     }
 
@@ -88,7 +73,7 @@ public class MainFrame extends JFrame {
         public void actionPerformed(ActionEvent e) {
 
             JButton[] buttons = new JButton[8];
-            // Create a new window with 5 buttons
+
             JFrame button1Frame = new JFrame("Button 1 Window");
             JPanel button1Panel = new JPanel();
             button1Panel.setLayout(new GridLayout(5, 1));
@@ -118,7 +103,7 @@ public class MainFrame extends JFrame {
             buttons[7].addActionListener(new EmployeeMethods.viewAllEmployees());
             button1Panel.add(buttons[7]);
             button1Frame.add(button1Panel);
-            button1Frame.setSize(200, 300);
+            button1Frame.setSize(800, 1000);
             button1Frame.setVisible(true);
         }
     }
@@ -143,23 +128,15 @@ public class MainFrame extends JFrame {
             buttons[3].addActionListener(new GuestMethods.viewAllGuests());
             button2Panel.add(buttons[3]);
             button2Frame.add(button2Panel);
-            button2Frame.setSize(200, 300);
+            button2Frame.setSize(800, 1000);
             button2Frame.setVisible(true);
         }
     }
 
-    private class Button2SubButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
-            String input = JOptionPane.showInputDialog(null, "Enter some text:");
-            System.out.println("Button 2 sub-button clicked with input: " + input);
-        }
-    }
 
     private class Button3Listener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JButton[] buttons = new JButton[6];
-            // Create a new window with 5 buttons
             JFrame button3Frame = new JFrame("Button 3 Window");
             JPanel button3Panel = new JPanel();
             button3Panel.setLayout(new GridLayout(5, 1));
@@ -183,18 +160,11 @@ public class MainFrame extends JFrame {
             buttons[5].addActionListener(new RoomMethods.ViewAllRooms());
             button3Panel.add(buttons[5]);
             button3Frame.add(button3Panel);
-            button3Frame.setSize(200, 300);
+            button3Frame.setSize(1000, 800);
             button3Frame.setVisible(true);
         }
     }
 
-    private class Button3SubButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
-            String input = JOptionPane.showInputDialog(null, "Enter some text:");
-            System.out.println("Button 3 sub-button clicked with input: " + input);
-        }
-    }
 
     private class Button4Listener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -214,18 +184,11 @@ public class MainFrame extends JFrame {
             buttons[2].addActionListener(new ServiceMethods.updateService());
             button4Panel.add(buttons[2]);
             button4Frame.add(button4Panel);
-            button4Frame.setSize(200, 300);
+            button4Frame.setSize(1000, 800);
             button4Frame.setVisible(true);
         }
     }
 
-    private class Button4SubButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
-            String input = JOptionPane.showInputDialog(null,"Enter some text:");
-            System.out.println("Button 4 sub-button clicked with input: " + input);
-        }
-    }
 
     private class Button5Listener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -245,24 +208,8 @@ public class MainFrame extends JFrame {
             buttons[2].addActionListener(new GuestBillingMethods.invoice());
             button5Panel.add(buttons[2]);
             button5Frame.add(button5Panel);
-            button5Frame.setSize(200, 300);
+            button5Frame.setSize(1000, 800);
             button5Frame.setVisible(true);
-        }
-    }
-
-    private class Button5SubButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
-            String input = JOptionPane.showInputDialog(null, "Enter some text:");
-            System.out.println("Button 5 sub-button clicked with input: " + input);
-        }
-    }
-
-    private class Button6SubButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            // Prompt the user to enter some text
-            String input = JOptionPane.showInputDialog(null, "Enter some text:");
-            System.out.println("Button 6 sub-button clicked with input: " + input);
         }
     }
 

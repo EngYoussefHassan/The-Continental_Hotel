@@ -13,16 +13,13 @@ public class GuestBillingService {
         double cost = 0.0;
         for (Guest guest : DataBase.guests) {
             if (guest.getGuestId() == guestId) {
-
                 if (guest.getRoom().getRoomType() == RoomType.SINGLE) {
                     cost = guest.getNoOfDays() * guest.getRoom().getRoomCost();
                 } else if (guest.getRoom().getRoomType() == RoomType.DOUBLE) {
                     cost = guest.getNoOfDays() * guest.getRoom().getRoomCost();
                 } else cost = guest.getNoOfDays() * guest.getRoom().getRoomCost();
-
             }
         }
-
         return cost;
     }
 
@@ -31,7 +28,6 @@ public class GuestBillingService {
         double cost = 0.0;
         for (Guest guest : DataBase.guests) {
             if (guest.getGuestId() == guestId) {
-
                 for (Service service : guest.getServices()) {
                     cost = service.getPrice() * guest.getNoOfDays();
                 }

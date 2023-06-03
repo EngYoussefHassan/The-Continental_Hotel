@@ -1,11 +1,9 @@
 package Service;
 
 import Data.DataBase;
-import Model.Employee;
 import Model.Service;
 
 import javax.swing.*;
-import java.time.LocalDate;
 import java.util.List;
 
 public class ServiceService {
@@ -35,7 +33,6 @@ public class ServiceService {
     }
     public static boolean doesServiceExist(int id) {
         boolean state = false;
-        int flag = 0;
         for (Service service:DataBase.services) {
             if (service.getServiceID() == id) {
                 state = true;

@@ -14,8 +14,8 @@ public class GuestService {
 
     public static void addGuest(String name, String natID, int roomNo, LocalDate checkout) {
         Room roomAdd = new Room();
-        for(Room room: DataBase.rooms){
-            if(room.getRoomNo()==roomNo){
+        for (Room room : DataBase.rooms) {
+            if (room.getRoomNo() == roomNo) {
                 roomAdd = room;
                 room.setOccupied(true);
             }
@@ -40,12 +40,10 @@ public class GuestService {
                 }
             }
         }
-
     }
 
     public static boolean doesGuestExist(int id) {
         boolean state = false;
-        int flag = 0;
         for (Guest guest : DataBase.guests) {
             if (guest.getGuestId() == id) {
                 state = true;
@@ -55,7 +53,4 @@ public class GuestService {
         return state;
     }
 
-    public List<Guest> getAllGuests() {
-        return DataBase.guests;
-    }
 }

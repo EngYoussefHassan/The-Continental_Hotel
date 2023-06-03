@@ -1,8 +1,7 @@
 package Service;
 
 import Data.DataBase;
-import Model.Room;
-import Model.RoomType;
+import Model.*;
 
 import javax.swing.*;
 import java.util.List;
@@ -45,17 +44,12 @@ public class RoomService {
         }
     }
 
-    /**
-     * this works for both busy and empty rooms depending
-     * on what you call from MAIN
-     **/
 
     public static void filterBusy(boolean state) {
         for (Room room : DataBase.rooms) {
             if (room.isOccupied() == state) {
                 JOptionPane.showMessageDialog(null, room.toString(), "FreeRooms", JOptionPane.PLAIN_MESSAGE);
             }
-
         }
     }
 
@@ -84,13 +78,9 @@ public class RoomService {
         }
     }
 
-    public List<Room> getAllRooms() {
-        return DataBase.rooms;
-    }
 
     public static boolean doesRoomExist(int roomNo) {
         boolean state = false;
-        int flag = 0;
         for (Room room : DataBase.rooms) {
             if (room.getRoomNo() == roomNo) {
                 state = true;
